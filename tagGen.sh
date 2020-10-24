@@ -40,6 +40,21 @@ while :
         (( ${Counter} < 7 )) && echo -n "${ConversionDigits[10#$Looper]}"
             # ^ Print only the first 6 chars. The least significant digits are not
             #   printed (at present we have 7 digits from the epoch conversion).
+            #
+            #   10#$Looper explained:
+            #   We want to get the value from array ConversionDigits which is stored
+            #   at offset Looper. The bash function for this is {ArrayName[#Offset]} .
+            #   However, bc is giving us a base-28 value in the form of a base-10
+            #   number WITH leading zeros,
+            #   so while ${ConversionDigits[18]} works, ${ConversionDigits[08]} will
+            #   give this error:
+            #       bash: 08: value too great for base (error token is "08")
+            #   because leading 0 means a base 8 value - which is also why
+            #   ${ConversionDigits[06]} will work!
+            #   The solution is to tell bash that we're supplying a base-10 value
+            #   regardless of the leading zeros by specifying 10 before the #
+            #   yielding [10#$Looper] .
+
         (( ${Counter} == 3 )) && echo -n " "
             # ^ For visual formatting only - print a space after 3 chars
         (( Counter += 1 ))
