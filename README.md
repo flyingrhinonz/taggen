@@ -1,5 +1,5 @@
 
-taggen - cable tag generator
+tagGen - cable tag generator
 ============================
 
 Copyright (C) 2020 Kenneth Aaron.
@@ -31,10 +31,26 @@ Usage
 =====
 
 Copy to any directory, make executable and run.
+You will be using the value from the `Cable tag` field,
+the other fields are for understanding the inner workings
+of the script and troubleshooting errors.
 Requires bash and bc, you'll probably already have both
 installed on your distro.
 
-taggen generates unique labels which are representative of
+Example:
+```
+./tagGen.sh
+For single output use:  ./tagGen.sh single   else it runs nonstop
+Press ctrl-c to stop
+
+Epoch time    Base-28 conversion           Cable tag
+----------    ------------------           ---------
+1603573470 ,  03 09 04 25 02 09 02  ====>  394 W29
+1603573501 ,  03 09 04 25 02 10 05  ====>  394 W2A
+1603573532 ,  03 09 04 25 02 11 08  ====>  394 W2C
+```
+
+tagGen generates unique labels which are representative of
 the current time, and uses a selection of letters that are
 not easily confused with others - for example we skip I, O
 and several others.
