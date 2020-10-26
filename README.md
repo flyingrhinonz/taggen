@@ -65,6 +65,7 @@ tag a cable every second, so we can drop the seventh digit.
 Typical use case - tag cables in a data center, where the
 tag is guaranteed to be unique, represents the time it was
 made, and short enough to be usable.
+Various software can handle these tags such as the excellent NetBox.
 
 That's it - simple and works.
 Enjoy...

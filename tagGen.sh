@@ -11,6 +11,8 @@ set -o pipefail
 PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin
 
 declare -a ConversionDigits=( 0 1 2 3 4 5 6 7 8 9 A C E F G H J K L M N P R T V W X Y )
+    # ^ We skip letters that can be easily confused with numbers or other letters.
+    #   Eg: 1/I , 0/D,O,Q , 2/Z, 5/S , V/U , 8/B
 declare -i CurrentEpoch
 declare BcBase28Epoch
 declare -i Counter
