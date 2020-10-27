@@ -13,6 +13,7 @@ PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin
 declare -a ConversionDigits=( 0 1 2 3 4 5 6 7 8 9 A C E F G H J K L M N P R T V W X Y )
     # ^ We skip letters that can be easily confused with numbers or other letters.
     #   Eg: 1/I , 0/D,O,Q , 2/Z, 5/S , V/U , 8/B
+    #   This results in 28 usable characters, hence base-28.
 declare -i CurrentEpoch
 declare BcBase28Epoch
 declare -i Counter
@@ -21,8 +22,8 @@ declare NonStop
 echo "For single output use:  $0 single   else it runs nonstop"
 echo "Press ctrl-c to stop"
 echo
-echo "Epoch time    Base-28 conversion           Cable tag"
-echo "----------    ------------------           ---------"
+echo "Epoch time     Base-28 conversion           Cable tag"
+echo "----------     ------------------           ---------"
 
 NonStop=${1:-nonstop}
 
@@ -32,7 +33,10 @@ while :
         # ^ Simple current time in epoch, eg: 1603573910
     BcBase28Epoch="$(echo "obase=28;ibase=10;${CurrentEpoch}" | bc)"
         # ^ bc converts the epoch integer to base-28, eg: 03 09 04 25 02 24 22
-    echo -n "${CurrentEpoch} , ${BcBase28Epoch}  ====>  "
+    BcBase28Epoch="${BcBase28Epoch##[[:blank:]]}"
+        # ^ bc gives a string with a leading space. Doesn't affect
+        #   the loop but better to have a clean string.
+    echo -n "${CurrentEpoch}  =  ${BcBase28Epoch}  ====>  "
 
     Counter=1
     for Looper in ${BcBase28Epoch}
