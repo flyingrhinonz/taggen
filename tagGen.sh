@@ -19,7 +19,6 @@ declare -i CurrentEpoch
 declare BcBase28Epoch
 declare -i Counter
 declare Mode="nonstop"
-OriginalIFS="${IFS}"
 
 
 function DisplayHelp {
