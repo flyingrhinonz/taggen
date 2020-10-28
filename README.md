@@ -34,7 +34,7 @@ Copy to any directory, make executable and run.
 You will be using the value from the `Cable tag` field,
 the other fields are for understanding the inner workings
 of the script and troubleshooting errors.
-Requires bash and bc, you'll probably already have both
+Requires `bash` and `bc`, you'll probably already have both
 installed on your distro.
 
 Example:
@@ -58,6 +58,8 @@ The reason you receive one output every half minute is
 because I want the tag to represent the time of generation,
 as well as be as short as possible to be usable. No one will
 tag a cable every second, so we can drop the seventh digit.
+The full list of valid tag characters is:
+`0 1 2 3 4 5 6 7 8 9 A C E F G H J K L M N P R T V W X Y`
 
 Typical use case - tag cables in a data center, where the
 tag is guaranteed to be unique, represents the time it was
@@ -73,14 +75,14 @@ A few more options exist via command line arguments as seen in tagGen help:
 ```
 ./tagGen.sh -h
 
-./tagGen.sh With no arguments - generates tags nonstop. Press Ctrl-c to stop.
+./tagGen.sh With no arguments - generates tags nonstop. Press ctrl-c to stop.
 -h        Display this help message and exit.
 -s        Single mode - generate one tag and exit.
 -n        Nonstop mode - generate tags nonstop - press ctrl-c to stop.
 -d <TAG>  Decode <TAG> back to epoch. <TAG> must be supplied with no spaces!
 ```
 
-Argument -d accepts tag in upper or lower case, but must not
+Argument -d TAG is case insensitive, but must not
 contain any spaces or non-tag characters. Tag must be 6 chars long.
 Note - when decoding tag back to epoch - you will see the base
 time of the 6 character tag. Remember - we drop the seventh digit
