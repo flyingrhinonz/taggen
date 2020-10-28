@@ -15,9 +15,6 @@ declare -a ConversionDigits=( 0 1 2 3 4 5 6 7 8 9 A C E F G H J K L M N P R T V 
     # ^ We skip letters that can be easily confused with numbers or other letters.
     #   Eg: 1/I , 0/D,O,Q , 2/Z, 5/S , V/U , 8/B
     #   This results in 28 usable characters, hence base-28.
-declare -i CurrentEpoch
-declare BcBase28Epoch
-declare -i Counter
 declare Mode="nonstop"
 
 
@@ -35,6 +32,10 @@ EOF
 
 
 function RunTagGen {
+    declare BcBase28Epoch
+    declare -i CurrentEpoch
+    declare -i Counter
+
     echo "Epoch time     Base-28 conversion           Cable tag"
     echo "----------     ------------------           ---------"
 

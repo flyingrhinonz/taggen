@@ -40,12 +40,11 @@ installed on your distro.
 Example:
 ```
 ./tagGen.sh
-
-Epoch time    Base-28 conversion           Cable tag
-----------    ------------------           ---------
-1603573470 ,  03 09 04 25 02 09 02  ====>  394 W29
-1603573501 ,  03 09 04 25 02 10 05  ====>  394 W2A
-1603573532 ,  03 09 04 25 02 11 08  ====>  394 W2C
+Epoch time     Base-28 conversion           Cable tag
+----------     ------------------           ---------
+1603847065  =  03 09 05 09 15 08 09  ====>  395 9H8
+1603847095  =  03 09 05 09 15 09 11  ====>  395 9H9
+1603847125  =  03 09 05 09 15 10 13  ====>  395 9HA
 ```
 
 tagGen generates unique labels which are representative of
@@ -81,12 +80,22 @@ A few more options exist via command line arguments as seen in tagGen help:
 -d <TAG>  Decode <TAG> back to epoch. <TAG> must be supplied with no spaces!
 ```
 
+Argument -d accepts tag in upper or lower case, but must not
+contain any spaces or non-tag characters. Tag must be 6 chars long.
 Note - when decoding tag back to epoch - you will see the base
 time of the 6 character tag. Remember - we drop the seventh digit
 at tag creation time.
 Therefore the time conversion will be lower that the real
 time by up to 28 seconds because we assume the seventh digit
 to be zero at the -d calculation time.
+
+Example:
+```
+./tagGen.sh -d 3959hF
+Decoding tag: "3959HF"
+Epoch = 1603847196
+In local time of this machine = Wed Oct 28 14:06:36 NZDT 2020
+```
 
 That's it - simple and works.
 Enjoy...
