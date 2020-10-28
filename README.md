@@ -40,8 +40,6 @@ installed on your distro.
 Example:
 ```
 ./tagGen.sh
-For single output use:  ./tagGen.sh single   else it runs nonstop
-Press ctrl-c to stop
 
 Epoch time    Base-28 conversion           Cable tag
 ----------    ------------------           ---------
@@ -66,6 +64,29 @@ Typical use case - tag cables in a data center, where the
 tag is guaranteed to be unique, represents the time it was
 made, and short enough to be usable.
 Various software can handle these tags such as the excellent NetBox.
+
+Normally what I do when tagging cables is run tagGen nonstop:
+`./tagGen.sh` and simply use the latest output when it's time to
+tag the next cable.
+
+A few more options exist via command line arguments as seen in tagGen help:
+
+```
+./tagGen.sh -h
+
+./tagGen.sh With no arguments - generates tags nonstop. Press Ctrl-c to stop.
+-h        Display this help message and exit.
+-s        Single mode - generate one tag and exit.
+-n        Nonstop mode - generate tags nonstop - press ctrl-c to stop.
+-d <TAG>  Decode <TAG> back to epoch. <TAG> must be supplied with no spaces!
+```
+
+Note - when decoding tag back to epoch - you will see the base
+time of the 6 character tag. Remember - we drop the seventh digit
+at tag creation time.
+Therefore the time conversion will be lower that the real
+time by up to 28 seconds because we assume the seventh digit
+to be zero at the -d calculation time.
 
 That's it - simple and works.
 Enjoy...
