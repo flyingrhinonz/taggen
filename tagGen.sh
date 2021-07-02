@@ -1,8 +1,12 @@
 #!/bin/bash
 
+# version 1.0.3 , Written by Kenneth Aaron , 2021-07-03
+
 # Cable tags are 6 digits long which means this code will be effective until
 # 29 July 2397 (epoch 13492928511), after which you'll need to start using
 # 7 digit cable tags.
+# In order to use 7 digit tags (or for that matter any length) you'll need
+# to change the code in several places as it is hardcoded for 6 digit tags.
 
 
 set -o nounset
