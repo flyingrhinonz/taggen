@@ -7,6 +7,7 @@
 # 7 digit cable tags.
 # In order to use 7 digit tags (or for that matter any length) you'll need
 # to change the code in several places as it is hardcoded for 6 digit tags.
+# Source: https://github.com/flyingrhinonz/taggen
 
 
 set -o nounset
